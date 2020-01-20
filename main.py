@@ -1,28 +1,23 @@
 from bottle import *
 import sqlite3
 
-@route('/kek')
-def img(username):
-    return template('frame/kek', username=username)
+@route('/greeting')
+def greeting(username):
+    return template('frame/greet', username=username)
 
+@route('/')
+def authorization():
+    return template('frame/authorization')
 
-@route('/test_page')
-def test_page():
-    return template('frame/test')
-
-@route('/fucking_form')
-def form():
-    return template('frame/fucking_form')
-
-@route('/fucking_form', method='POST')
+@route('/', method='POST')
 def do_login():
     username = request.forms.get('username')
     password = request.forms.get('password')
 
     if (username == '1') and (password == '1'):
-        return img(username)
+        return greeting(username)
     else:
-        return form()
+        return authorization()
 
 
 run(host='localhost', port='1025', debug=True)
