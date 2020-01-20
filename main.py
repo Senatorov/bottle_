@@ -20,4 +20,4 @@ def do_login():
         return authorization()
 
 
-run(host='localhost', port='1025', debug=True)
+run(host='localhost', port='8080', debug=True)

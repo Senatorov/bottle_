@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Authorization page</title>
+    <title>Registr page</title>
     <link href="https://fonts.googleapis.com/css?family=Bangers|Open+Sans&display=swap" rel="stylesheet"> 
 </head>
 <body>
@@ -22,14 +22,14 @@
             <div class="inner">
         
                 <div class="login-wr">
-                <div class="title__form">Sign in</div>
+                <div class="title__form"><h1 class="fail">such user already exists</h1></div>
                     <form>
                         <div class="form">
                             <input type="text" placeholder="Username">
                             <input type="password" placeholder="Password">
+                            <input type="password" placeholder="Repeat password">
                          
-                            <button class='btn__sign'>Sign in</button> 
-                            <button class="btn__rgst"> Registr </button>
+                            <button class='btn__registr'>Okay</button> 
                         </div>
                     </form>
                 </div>
@@ -81,6 +81,13 @@ body{
     letter-spacing: 4px;
 }
 
+#range5 .fail{
+    font-size: 20px;
+    color: #b6225d;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 2px;
+}
+
 
 #range5 .outer{
     border: 4px ridge rgb(211, 182, 210);
@@ -111,6 +118,7 @@ body{
     -moz-outline-style: none;
 }
 
+
 #range5 button {
     width: 70%;  
     background: none;
@@ -120,7 +128,7 @@ body{
     font-size: 16px;
     font-weight: 100;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin: 10px 0 15px 0;
     transition: color 0.3s linear;
     border-radius: 10px;
 }
