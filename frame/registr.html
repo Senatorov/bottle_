@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Registr page</title>
+    <title>Registration page</title>
     <link href="https://fonts.googleapis.com/css?family=Bangers|Open+Sans&display=swap" rel="stylesheet"> 
 </head>
 <body>
@@ -22,14 +22,14 @@
             <div class="inner">
         
                 <div class="login-wr">
-                <div class="title__form">Registr</div>
-                    <form>
+                <div class="title__form">Registration</div>
+                    <form action="/registration" method="post">
                         <div class="form">
-                            <input type="text" placeholder="Username">
-                            <input type="password" placeholder="Password">
-                            <input type="password" placeholder="Repeat password">
+                            <input type="text" name="username" placeholder="Username">
+                            <input type="password" name="password" placeholder="Password">
+                            <input type="password" name="r_password" placeholder="Repeat password">
                          
-                            <button class='btn__registr'>Okay</button> 
+                            <button class='btn__registr' name="okay" value="True" type="submit">Okay</button> 
                         </div>
                     </form>
                 </div>
@@ -70,7 +70,7 @@ body{
     justify-content: center;
     width: 100%;
     font-weight: 700;
-    font-size: 1.8em;
+    font-size: 1.5em;
     margin: 0;
     padding: 0;
     color: #eee;
