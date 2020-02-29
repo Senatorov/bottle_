@@ -50,7 +50,7 @@ def register():
     password = request.forms.get('password')
     r_password = request.forms.get('r_password')
 
-    if username == '!!!': ######################################################### SQLite3 name == username!!!!######################################################
+    if username == '!!!': #################################################### SQLite3 name == username!!!!######################################################
         return f_registration_username()
     elif password != r_password:
         return f_registration_password()
