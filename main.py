@@ -18,7 +18,13 @@ def do_login():
     registr = request.forms.get('Registr')
 
     if sign:
-        if (username == '1') and (password == '1'):
+        req_db = "SELECT * FROM UsersInfo WHERE Name='" + username + "' AND Password='" + password + "'"
+        con = sqlite3.connect('DataBase_site.db')
+        cursorObj = con.cursor()
+        cursorObj.execute(req_db)
+        data = cursorObj.fetchall()
+        cursorObj.close()
+        if len(data) == 1:
             return greeting(username)
         else:
             return authorization_fail()
@@ -50,12 +56,22 @@ def register():
     password = request.forms.get('password')
     r_password = request.forms.get('r_password')
 
+
     if username == '!!!': #################################################### SQLite3 name == username!!!!######################################################
         return f_registration_username()
     elif password != r_password:
         return f_registration_password()
     else:
+        command = 'INSERT INTO UsersInfo VALUES("' + username + '","' + password + '")'
+        # cursorObj.execute('INSERT INTO UsersInfo VALUES("Nikolay","qwerty123")')
+        con = sqlite3.connect('DataBase_site.db')
+        cursorObj = con.cursor()
+        cursorObj.execute(command)
+        con.commit()
+        cursorObj.close()
+
         return authorization()
+
 
 
 
