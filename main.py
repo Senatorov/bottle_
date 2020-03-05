@@ -36,7 +36,7 @@ def do_login():
 
 @route('/greeting')
 def greeting(username):
-    return template('frame/greet', username=username)
+    return template('frame/greet', username=username.title())
 
 @route('registration')
 def regisration():
@@ -56,8 +56,15 @@ def register():
     password = request.forms.get('password')
     r_password = request.forms.get('r_password')
 
+    req_nm = "SELECT * FROM UsersInfo WHERE Name ='" + username + "'"
+    con = sqlite3.connect('DataBase_site.db')
+    cursorObj = con.cursor()
+    cursorObj.execute(req_nm)
+    data_name = cursorObj.fetchall()
+    cursorObj.close()
 
-    if username == '!!!': #################################################### SQLite3 name == username!!!!######################################################
+
+    if len(data_name) > 0:
         return f_registration_username()
     elif password != r_password:
         return f_registration_password()
@@ -78,5 +85,11 @@ def register():
 
 
 
+if __name__ == '__main__':
+    # Get required port, default to 5000.
+    port = os.environ.get('PORT', 5000)
 
-run(host='localhost', port='8080', debug=True)
+    # Run the app.
+    run(host='0.0.0.0', port=port)
+
+# run(host='localhost', port='8080', debug=True)
